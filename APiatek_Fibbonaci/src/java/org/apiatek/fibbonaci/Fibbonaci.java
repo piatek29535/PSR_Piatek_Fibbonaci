@@ -20,19 +20,21 @@ import javax.ejb.Stateless;
 public class Fibbonaci {
 
     /**
-     * This is a sample web service operation
-     */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
-
-    /**
      * Web service operation
      */
-    @WebMethod(operationName = "add")
-    public int add(@WebParam(name = "a") int a, @WebParam(name = "b") int b) {
-        //TODO write your implementation code here:
-        return a+b;
+    @WebMethod(operationName = "fibbonaci")
+    public float fibbonaci(@WebParam(name = "argument") int argument) {
+        
+        int result = 0;
+        
+        if(argument == 0){
+            result = 0;
+        }else if(argument == 1){
+            result = 1;
+        }else {
+            result = (int) (fibbonaci(argument-1) + fibbonaci(argument-2));
+        }
+        
+        return (float)result;
     }
 }
