@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class FibbonaciGUI extends javax.swing.JFrame {
 
     private ArrayList<String> list = new ArrayList<String>();
+    
     /**
      * Creates new form FibbonaciGUI
      */
@@ -36,10 +37,11 @@ public class FibbonaciGUI extends javax.swing.JFrame {
         digit = new javax.swing.JTextField();
         calculate = new javax.swing.JButton();
         title = new javax.swing.JLabel();
-        resultPlainText = new javax.swing.JLabel();
-        result = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         history = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fibbonaciSeries = new javax.swing.JTextArea();
+        resultTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,7 +53,7 @@ public class FibbonaciGUI extends javax.swing.JFrame {
             }
         });
 
-        calculate.setText("Oblicz");
+        calculate.setText("Wygeneruj ciąg");
         calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calculateActionPerformed(evt);
@@ -63,12 +65,6 @@ public class FibbonaciGUI extends javax.swing.JFrame {
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Ciąg Fibbonaciego");
 
-        resultPlainText.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        resultPlainText.setText("Wynik:");
-
-        result.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        result.setForeground(new java.awt.Color(255, 255, 255));
-
         history.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "tutaj historia wpisywanych danych" };
             public int getSize() { return strings.length; }
@@ -76,28 +72,38 @@ public class FibbonaciGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(history);
 
+        fibbonaciSeries.setEditable(false);
+        fibbonaciSeries.setColumns(20);
+        fibbonaciSeries.setLineWrap(true);
+        fibbonaciSeries.setRows(5);
+        jScrollPane2.setViewportView(fibbonaciSeries);
+
+        resultTitle.setText("Wygenerowany ciąg Fibbonaciego");
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(resultPlainText)
-                            .addComponent(digit, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(calculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 85, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(digit, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(calculate))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(resultTitle)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -105,27 +111,24 @@ public class FibbonaciGUI extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(title)
-                .addGap(36, 36, 36)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(digit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(resultPlainText))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(result, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(resultTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jDesktopPane1.setLayer(digit, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(calculate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(title, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(resultPlainText, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(result, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(resultTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,8 +150,9 @@ public class FibbonaciGUI extends javax.swing.JFrame {
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         if(!digit.getText().isEmpty()){
-            result.setText(digit.getText());
-            list.add(digit.getText());   
+            fibbonaciSeries.setText(""+APiatek_Fibbonaci_Client.fibbonaci(Integer.parseInt(digit.getText())));
+            list.add("Ilość pierwszych wyrazów w ciągu: "+digit.getText());
+            list.add("Następujące wyrazy : "+fibbonaciSeries.getText());
             digit.setText("");
             history.setListData(list.toArray());
         }else{
@@ -195,11 +199,12 @@ public class FibbonaciGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calculate;
     private javax.swing.JTextField digit;
+    private javax.swing.JTextArea fibbonaciSeries;
     private javax.swing.JList history;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel result;
-    private javax.swing.JLabel resultPlainText;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel resultTitle;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

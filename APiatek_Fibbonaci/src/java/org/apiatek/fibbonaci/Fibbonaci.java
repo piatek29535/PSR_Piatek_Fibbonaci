@@ -23,18 +23,22 @@ public class Fibbonaci {
      * Web service operation
      */
     @WebMethod(operationName = "fibbonaci")
-    public float fibbonaci(@WebParam(name = "argument") int argument) {
+    public String fibbonaci(@WebParam(name = "argument") int argument) {
         
-        int result = 0;
+        StringBuilder result = new StringBuilder();
         
-        if(argument == 0){
-            result = 0;
-        }else if(argument == 1){
-            result = 1;
-        }else {
-            result = (int) (fibbonaci(argument-1) + fibbonaci(argument-2));
+        int a = 0;
+        int b = 1;
+        int sum = 0;
+        
+        result.append(a+", "+b);
+        for (int i = 0; i < argument-2; i++) {
+            sum = b + a;
+            a = b;
+            b = sum;
+            result.append(", "+sum);
         }
-        
-        return (float)result;
+                
+        return result.toString();
     }
 }

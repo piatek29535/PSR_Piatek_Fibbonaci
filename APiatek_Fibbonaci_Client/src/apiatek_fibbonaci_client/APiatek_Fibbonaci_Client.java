@@ -16,10 +16,10 @@ public class APiatek_Fibbonaci_Client {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-           System.out.println(fibbonaci(6));
+           
     }
 
-    private static float fibbonaci(int argument) {
+    public static String fibbonaci(int argument) {
         org.apiatek.fibbonaci.Fibbonaci_Service service = new org.apiatek.fibbonaci.Fibbonaci_Service();
         org.apiatek.fibbonaci.Fibbonaci port = service.getFibbonaciPort();
         return port.fibbonaci(argument);
