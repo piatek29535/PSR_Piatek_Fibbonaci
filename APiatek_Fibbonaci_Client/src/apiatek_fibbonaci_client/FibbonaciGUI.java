@@ -78,7 +78,7 @@ public class FibbonaciGUI extends javax.swing.JFrame {
         fibbonaciSeries.setRows(5);
         jScrollPane2.setViewportView(fibbonaciSeries);
 
-        resultTitle.setText("Wygenerowany ciąg Fibbonaciego");
+        resultTitle.setText("Wygenerowany ciąg Fibonacciego");
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -150,11 +150,15 @@ public class FibbonaciGUI extends javax.swing.JFrame {
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         if(!digit.getText().isEmpty()){
-            fibbonaciSeries.setText(""+APiatek_Fibbonaci_Client.fibbonaci(Integer.parseInt(digit.getText())));
-            list.add("Ilość pierwszych wyrazów w ciągu: "+digit.getText());
-            list.add("Następujące wyrazy : "+fibbonaciSeries.getText());
-            digit.setText("");
-            history.setListData(list.toArray());
+            if(Integer.parseInt(digit.getText()) > 1){
+                fibbonaciSeries.setText(""+APiatek_Fibbonaci_Client.fibbonaci(Integer.parseInt(digit.getText())));
+                list.add("Ilość pierwszych wyrazów w ciągu: "+digit.getText());
+                list.add("Następujące wyrazy : "+fibbonaciSeries.getText());
+                digit.setText("");
+                history.setListData(list.toArray());
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Wprowadzona liczba musi być większa niż 1");
+            }
         }else{
             JOptionPane.showMessageDialog(rootPane, "Podaj liczbę");
         }

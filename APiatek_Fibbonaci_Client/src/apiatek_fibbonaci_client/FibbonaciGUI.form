@@ -159,7 +159,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="resultTitle">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Wygenerowany ci&#x105;g Fibbonaciego"/>
+            <Property name="text" type="java.lang.String" value="Wygenerowany ci&#x105;g Fibonacciego"/>
           </Properties>
         </Component>
       </SubComponents>
